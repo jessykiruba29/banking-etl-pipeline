@@ -1,0 +1,25 @@
+# Virtual Environment
+venv/
+
+# Python Cache Files
+__pycache__/
+*.pyc
+
+# Environment Variables
+.env
+
+# Database Files
+*.db
+
+# OS Files
+.DS_Store
+
+# Raw Dataset
+data/raw/
+data/
+data/processed/
+# VS Code Settings
+.vscode/
+
+# Processed Files (optional)
+data/processed/*.csv
