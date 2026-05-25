@@ -1,0 +1,33 @@
+
+BANKING TRANSACTION ANALYTICS REPORT
+===================================
+
+1. Transaction Type Analysis
+- Shows distribution of Debit and Credit transactions.
+
+2. Channel Analysis
+- Identifies which banking channel contributes the highest transaction amount.
+
+3. Monthly Trends
+- Displays month-wise transaction growth and activity.
+
+4. Age Group Analysis
+- Shows which customer age group contributes the most transactions.
+
+5. Time Period Analysis
+- Identifies peak transaction periods during the day.
+
+6. Login Attempt Analysis
+- Analyzes relationship between login attempts and transaction amounts.
+
+7. Merchant Analysis
+- Identifies top merchants based on transaction volume.
+
+8. Weekend vs Weekday Analysis
+- Compares banking activity between weekends and weekdays.
+
+9. High Transaction Detection
+- High transactions were identified using 95th percentile threshold.
+
+10. Unusual Transaction Detection
+- Outliers were detected using the IQR method.
