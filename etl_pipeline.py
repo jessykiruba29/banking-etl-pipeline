@@ -1,12 +1,13 @@
 import pandas as pd
+import numpy as np
 
 
 # PHASE 1 - EXTRACTION
-#explore datasets and identify issues
 
 df=pd.read_csv('data/raw/banking_transactions.csv',nrows=10000)
 print("FIRST 5 ROWS OF THE DATASET:")
 print(df.head())
+
 
 # PHASE 2 -DATA PROFILING
 
@@ -29,6 +30,7 @@ print("\nINVALID AMOUNT VALUES:")
 print((df['TransactionAmount']<0).sum())
 print("Age less than 18:")
 print((df["CustomerAge"]<18).sum())
+
 
 # PHASE 3 - TRANSFORMATION AND CLEANING
 
@@ -69,7 +71,6 @@ def get_time_period(hour):
         return "Afternoon"
     else:
         return "Evening"
-    
 df["TimePeriod"]=df["hour"].apply(get_time_period)
 
 #detect unusual transactions based on amount and flag them
@@ -79,17 +80,22 @@ IQR=Q3-Q1
 upper_bound=Q3+1.5*IQR
 df["UnusualTransaction"]=(df["TransactionAmount"]>upper_bound).astype(int)
 
+#unusual transactions count
+print(df["UnusualTransaction"].value_counts())
+
+
+# PHASE 4 - LOADING
+
 print("\nCLEANED DATASET:")
 print(df.head())
-
 
 print("\nDATA TYPES:")
 print(df.dtypes)
 
-print(df["UnusualTransaction"].value_counts())
+#df.to_csv("data/processed/cleaned_transactions.csv",index=False)
+#print("succesfully saved cleaned dataset to data/processed/cleaned_transactions.csv")
 
-df.to_csv("data/processed/cleaned_transactions.csv",index=False)
-print("succesfully saved cleaned dataset to data/processed/cleaned_transactions.csv")
+
 
 
 
