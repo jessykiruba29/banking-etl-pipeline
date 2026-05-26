@@ -1,1 +1,0 @@
-print(df["TransactionDate"].dtype)

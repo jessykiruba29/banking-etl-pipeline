@@ -35,8 +35,8 @@ print((df["CustomerAge"]<18).sum())
 # PHASE 3 - TRANSFORMATION AND CLEANING
 
 #convert to datetime and extract year, month, day, hour
+df["has_time"] = df["TransactionDate"].astype(str).str.contains(":")
 df['TransactionDate'] = pd.to_datetime(df['TransactionDate'],format="mixed")
-df["has_time"] = df["TransactionDate"].dt.time != pd.Timestamp("00:00:00").time()
 df['year'] = df['TransactionDate'].dt.year
 df['month'] = df['TransactionDate'].dt.month
 df['day'] = df['TransactionDate'].dt.day_name()
@@ -45,9 +45,7 @@ df['hour'] = df['TransactionDate'].dt.hour
 df['year'] = df['year'].astype('Int64')
 df['month'] = df['month'].astype('Int64')
 df['hour'] = df['hour'].astype('Int64')
-print("date")
-count_missing_time = df['has_time'].value_counts()
-print(f"Missing time values: {count_missing_time}")
+
 #strip whitespaces and standardize text
 df['Channel']=df['Channel'].str.strip().str.title()
 df['TransactionType']=df['TransactionType'].str.strip().str.title()
@@ -110,8 +108,8 @@ print(df.isnull().sum())
 print("\nDATA TYPES:")
 print(df.dtypes)
 
-#df.to_csv("data/processed/cleaned_transactions.csv",index=False)
-#print("succesfully saved cleaned dataset to data/processed/cleaned_transactions.csv")
+df.to_csv("data/processed/cleaned_transactions.csv",index=False)
+print("succesfully saved cleaned dataset to data/processed/cleaned_transactions.csv")
 
 
 
