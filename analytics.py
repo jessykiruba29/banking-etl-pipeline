@@ -209,7 +209,7 @@ plt.close()
 high_transactions=(
     df[df["HighTransaction"]==1]
     .groupby("AccountID")["TransactionAmount"]
-    .sum()
+    .mean()
     .sort_values(ascending=False)
     .head(5)
 )
@@ -219,18 +219,18 @@ high_transactions.plot(kind='bar')
 
 plt.title("Top Accounts with High Value Transactions")
 plt.xlabel("Account ID")
-plt.ylabel("Total High Transaction Amount")
+plt.ylabel("Average High Transaction Amount")
 
 plt.savefig("outputs/charts/high_transaction_accounts.png")
 plt.close()
 
 # 15 a. Occupation Analysis
 
-occ = df.groupby("CustomerOccupation")["TransactionAmount"].sum().sort_values(ascending=False)
+occ = df.groupby("CustomerOccupation")["TransactionAmount"].mean().sort_values(ascending=False)
 
 plt.figure(figsize=(6,4))
 occ.plot(kind="bar")
-plt.title("Occupation vs Total Transaction Amount")
+plt.title("Occupation vs Average Transaction Amount")
 plt.tight_layout()
 plt.savefig("outputs/charts/occupation.png")
 plt.close()
